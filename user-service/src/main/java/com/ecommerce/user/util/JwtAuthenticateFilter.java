@@ -7,7 +7,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import io.jsonwebtoken.io.IOException;
+import java.io.IOException;
+
 import io.jsonwebtoken.lang.Collections;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -24,7 +25,7 @@ public class JwtAuthenticateFilter extends OncePerRequestFilter {
   @Override
   protected void doFilterInternal(HttpServletRequest request,
       HttpServletResponse response, FilterChain filterChain)
-      throws ServletException {
+      throws IOException, ServletException {
     final String authHeader = request.getHeader("Authorization");
     if (authHeader != null && authHeader.startsWith("Bearer ")) {
       final String token = authHeader.substring(7);
