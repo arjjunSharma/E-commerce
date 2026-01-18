@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserCreatedRequestDto {
+public class UserCreateRequestDto {
 
   @NotBlank(message = " name required ")
   private String name;
@@ -22,5 +22,6 @@ public class UserCreatedRequestDto {
   @NotBlank(message = " password required ")
   @Size(min = 6, message = " password must be at least 6 characters ")
   private String password;
+  private String phone;
 
 }

@@ -1,15 +1,15 @@
 package com.ecommerce.user.service.impl;
 
 import com.ecommerce.user.dto.LoginRequestDto;
-import com.ecommerce.user.dto.UserCreatedRequestDto;
+import com.ecommerce.user.dto.LoginResponseDto;
+import com.ecommerce.user.dto.UserCreateRequestDto;
 import com.ecommerce.user.dto.UserResponseDto;
-import com.ecommerce.user.entity.User;
 
 public interface UserService {
 
-  UserResponseDto register(UserCreatedRequestDto dto);
+  UserResponseDto register(UserCreateRequestDto dto);
 
-  LoginRequestDto login(LoginRequestDto dto);
+  LoginResponseDto login(LoginRequestDto dto);
 
   UserResponseDto getrById(Long id);
 

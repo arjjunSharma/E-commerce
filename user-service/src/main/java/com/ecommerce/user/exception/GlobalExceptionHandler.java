@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
-class GlobalExceptionHandler<JwtAuthenticationFilter> {
+class GlobalExceptionHandler<JwtAuthenticateFilter> {
 
   private final JwtAuthenticateFilter jwtAuthenticateFilter;
 
