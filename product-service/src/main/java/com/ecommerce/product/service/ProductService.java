@@ -1,42 +1,47 @@
 package com.ecommerce.product.service;
 
+import java.io.IOException;
+
 import org.springframework.data.domain.Page;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.ecommerce.product.dto.ProductDto;
 
 public interface ProductService {
-    ProductDto createProduct(ProductDto dto);
+        ProductDto createProduct(ProductDto dto);
 
-    ProductDto updateProduct(Long id, ProductDto dto);
+        ProductDto updateProduct(Long id, ProductDto dto);
 
-    void deleteProduct(Long id);
+        void deleteProduct(Long id);
 
-    ProductDto getProductById(Long id);
+        ProductDto getProductById(Long id);
 
-    Page<ProductDto> getAllProducts(
-            int page,
-            int size, String sortBy, String sortDir);
+        ProductDto uploadImage(Long productId, MultipartFile file) throws IOException;
 
-    Page<ProductDto> searchProducts(
-            String keyword,
-            int page,
-            int size);
+        Page<ProductDto> getAllProducts(
+                        int page,
+                        int size, String sortBy, String sortDir);
 
-    Page<ProductDto> filterProducts(
-            String keyword,
-            Long categoryId,
-            Double minPrice,
-            Double maxPrice,
-            int page,
-            int size);
+        Page<ProductDto> searchProducts(
+                        String keyword,
+                        int page,
+                        int size);
 
-    Page<ProductDto> advanceFilter(
-            String keyword,
-            Long categoryId,
-            Double minPrice,
-            Double maxPrice,
-            int page,
-            int size,
-            String sortBy,
-            String sortDir);
+        Page<ProductDto> filterProducts(
+                        String keyword,
+                        Long categoryId,
+                        Double minPrice,
+                        Double maxPrice,
+                        int page,
+                        int size);
+
+        Page<ProductDto> advanceFilter(
+                        String keyword,
+                        Long categoryId,
+                        Double minPrice,
+                        Double maxPrice,
+                        int page,
+                        int size,
+                        String sortBy,
+                        String sortDir);
 }

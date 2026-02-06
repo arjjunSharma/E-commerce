@@ -3,10 +3,8 @@ package com.ecommerce.product.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import com.ecommerce.product.dto.ProductDto;
 import com.ecommerce.product.service.ProductService;
-import com.ecommerce.product.service.RequriredArgsConstructor;
 
 import lombok.RequiredArgsConstructor;
 
@@ -19,6 +17,9 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/products")
@@ -61,7 +62,8 @@ public class ProductController {
       @RequestParam(defaultValue = "10") int size) {
     return ResponseEntity.ok(productService.searchProducts(keyword, page, size));
   }
-  @GetMapping("/filte5")
+
+  @GetMapping("/filter")
   public ResponseEntity<Page<ProductDto>> filterProducts(@RequestParam(required = false) String keyword,
       @RequestParam(required = false) Long categoryId,
       @RequestParam(required = false) Double minPrice,
@@ -71,5 +73,11 @@ public class ProductController {
     return ResponseEntity.ok(
         productService.filterProducts(keyword, categoryId, minPrice, maxPrice, page, size));
   }
-  
+
+  @PostMapping("/{id}/upload_image")
+  public ResponseEntity<ProductDto> uploadImage(@PathVariable Long id, @RequestParam("file") MultipartFile file)
+      throws IOException {
+    return ResponseEntity.ok(productService.uploadImage(id, file));
+  }
+
 }
